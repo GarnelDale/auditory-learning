@@ -212,6 +212,10 @@ class MyGame(arcade.Window):
                 if self.score >= 30:
                     self.active_target_list[0].draw_delay += 1
                 self.active_target_list[0].sound_frequency += 1
+        if timer == 0 and run > self.original_run:
+            result = open(f'trainingResults{run}.txt', 'w')
+            result.write(f'Subject failed on round {self.score+1} on chord {self.active_target_list[0].chord}')
+            result.close()
 
 def main():
     """ Main function """
