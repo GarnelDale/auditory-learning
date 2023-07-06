@@ -5,13 +5,13 @@ import arcade
 import random
 
 # Screen title and size
-SCREEN_WIDTH = 1200
-SCREEN_HEIGHT = 1200
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 800
 SCREEN_TITLE = "Auditory Learning"
 
 # Constants for sizing
 TARGET_RADIUS = 18
-DEFENCE_RADIUS = 50
+DEFENCE_RADIUS = 40
 
 # Constants for number of different targets
 CHORD_TYPES = 5
