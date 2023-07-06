@@ -46,7 +46,7 @@ RATE_OF_TRAVEL = .5
 
 # Global variables for number of runs and current time
 run = 1
-timer = 30
+timer = 1800
 
 class Target(arcade.SpriteCircle):
     """ Base Target Class """
@@ -101,6 +101,7 @@ class MyGame(arcade.Window):
         self.sound = None
         self.failure = 0
         self.original_run = 1
+        self.start_time = 0
 
         arcade.set_background_color(arcade.color.BLACK)
 
@@ -115,6 +116,7 @@ class MyGame(arcade.Window):
         self.score = 0
         self.failure = 2400
         self.original_run = run
+        self.start_time = timer
 
         # Create every target
         for chord in range(CHORD_TYPES):
@@ -158,7 +160,7 @@ class MyGame(arcade.Window):
             if timer > 0:
                 arcade.draw_text("Hit space to continue.", SCREEN_WIDTH/3, SCREEN_HEIGHT/3 * 2)
             else:
-                arcade.draw_text("Thank you for your participation. Please e-mail me the trainingResults.txt files that were created.", SCREEN_WIDTH/3, SCREEN_HEIGHT/4 * 3)
+                arcade.draw_text("Thank you for your participation. Please e-mail me the trainingResults#.txt files that were created.", SCREEN_WIDTH/3, SCREEN_HEIGHT/4 * 3)
 
     def on_mouse_press(self, x, y, button, key_modifiers):
         """ Called when the user presses a mouse button. """
@@ -184,7 +186,7 @@ class MyGame(arcade.Window):
 
     def on_update(self, delta):
         global timer, run
-
+        time = self.start_time - timer
         if timer > 0  and run == self.original_run:
             # Make sure there is a target
             if len(self.active_target_list) == 0:
@@ -198,7 +200,7 @@ class MyGame(arcade.Window):
                 # write a print to file for the active_target_list[0] chord type 
                 # and the "score" to represent which iteration
                 result = open(f'trainingResults{run}.txt', 'w')
-                result.write(f'Subject failed on round {self.score+1} on chord {self.active_target_list[0].chord}')
+                result.write(f'Subject failed round {self.score+1} on chord {self.active_target_list[0].chord} after {time} seconds.')
                 result.close()
                 run += 1 
             else:
@@ -214,7 +216,7 @@ class MyGame(arcade.Window):
                 self.active_target_list[0].sound_frequency += 1
         if timer == 0 and run > self.original_run:
             result = open(f'trainingResults{run}.txt', 'w')
-            result.write(f'Subject failed on round {self.score+1} on chord {self.active_target_list[0].chord}')
+            result.write(f'Timer finished on round {self.score+1} on chord {self.active_target_list[0].chord} after {time} seconds.')
             result.close()
 
 def main():
