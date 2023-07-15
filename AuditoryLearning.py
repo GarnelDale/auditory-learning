@@ -3,6 +3,7 @@ Auditory Learning project.
 """
 import arcade
 import random
+import pyautogui
 
 # Screen title and size
 SCREEN_WIDTH = 800
@@ -48,6 +49,11 @@ RATE_OF_TRAVEL = .5
 run = 1
 timer = 1800
 
+# function for centering the mouse
+def center_mouse():
+    screen = pyautogui.size()
+    pyautogui.moveTo(screen[0] / 2, screen[1] / 2, 0)
+
 class Target(arcade.SpriteCircle):
     """ Base Target Class """
 
@@ -91,7 +97,7 @@ class MyGame(arcade.Window):
     """ Main application class. """
 
     def __init__(self):
-        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, center_window=True)
 
         # Sprite list with all the targets and sprite for center.
         self.target_list = None
@@ -136,6 +142,9 @@ class MyGame(arcade.Window):
         earth.position = (SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
         self.defence_list.append(earth)
 
+        # Center mouse at start of round
+        center_mouse()
+
     def on_draw(self):
         """ Render the screen. """
         global timer
@@ -178,6 +187,8 @@ class MyGame(arcade.Window):
             active = self.target_list.pop(0)
             self.sound = arcade.load_sound(active.chord)
             self.active_target_list.append(active)
+
+            center_mouse()
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.SPACE and self.failure < TARGET_RADIUS + DEFENCE_RADIUS:
