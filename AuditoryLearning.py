@@ -105,6 +105,7 @@ class MyGame(arcade.Window):
         self.defence_list = None
         self.score = 0
         self.sound = None
+        self.sound_player = None
         self.failure = 0
         self.original_run = 1
         self.start_time = 0
@@ -178,6 +179,7 @@ class MyGame(arcade.Window):
 
         # Have we clicked on a target?
         if len(hit) > 0:
+            arcade.stop_sound(self.sound_player)
             self.score += 1
             hit_target = self.active_target_list.pop()
             hit_target.draw_delay = 0
@@ -217,7 +219,7 @@ class MyGame(arcade.Window):
             else:
                 self.active_target_list[0].move_to_center(RATE_OF_TRAVEL + self.score / 50)
                 if self.active_target_list[0].sound_frequency % 30 == 0:
-                    arcade.play_sound(self.sound)
+                    self.sound_player = arcade.play_sound(self.sound)
                 if self.active_target_list[0].sound_frequency % 60 == 0:
                     timer -= 1
                 if ((self.score % len(self.target_list)) == 0):
