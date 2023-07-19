@@ -4,6 +4,10 @@ Auditory Learning project.
 import arcade
 import random
 import pyautogui
+import time
+import csv
+from arcade.gui import UIManager
+from arcade.gui.widgets import UITextArea, UIInputText, UITexturePane
 
 # Screen title and size
 SCREEN_WIDTH = 800
@@ -45,14 +49,29 @@ TYPE_COLOR = [(122, 40, 203), (165, 1, 4),
 # Constant for base rate of travel
 RATE_OF_TRAVEL = .5
 
-# Global variables for number of runs and current time
-run = 1
-timer = 1800
+# Global variables for number of runs, timer, and trial data
+timer = 30 #1800
+subject = ''
+results = []
 
 # function for centering the mouse
 def center_mouse():
     screen = pyautogui.size()
     pyautogui.moveTo(screen[0] / 2, screen[1] / 2, 0)
+
+# function to get time in seconds since epoch at start of trial
+def get_time():
+    return time.time_ns() / (10 ** 9) # convert to floating-point seconds
+
+# function to calculate trial duration in partial seconds
+def calc_time(start):
+    return (time.time_ns() / (10 ** 9)) - start 
+
+def add_run_to_file(subject, round, difficulty, chord, pass_fail, start_time, reaction_time):
+    global results
+    results.append({'subject': subject, 'round': round, 'difficulty': difficulty, 
+                    'chord': chord, 'pass_fail': pass_fail, 'start_time': start_time, 
+                    'reaction_time': reaction_time})
 
 class Target(arcade.SpriteCircle):
     """ Base Target Class """
@@ -93,11 +112,11 @@ class Defence(arcade.SpriteCircle):
 
         super().__init__(radius, self._color)
 
-class MyGame(arcade.Window):
+class GameView(arcade.View):
     """ Main application class. """
 
     def __init__(self):
-        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, center_window=True)
+        super().__init__()
 
         # Sprite list with all the targets and sprite for center.
         self.target_list = None
@@ -107,8 +126,9 @@ class MyGame(arcade.Window):
         self.sound = None
         self.sound_player = None
         self.failure = 0
-        self.original_run = 1
+        self.start_timer = 0
         self.start_time = 0
+        self.written = False
 
         arcade.set_background_color(arcade.color.BLACK)
 
@@ -119,11 +139,11 @@ class MyGame(arcade.Window):
         self.target_list = []
         self.active_target_list = arcade.SpriteList()
         self.defence_list = arcade.SpriteList()
-
         self.score = 0
         self.failure = 2400
-        self.original_run = run
-        self.start_time = timer
+        self.start_timer = timer
+        self.start_time = get_time()
+        self.written = False
 
         # Create every target
         for chord in range(CHORD_TYPES):
@@ -166,21 +186,29 @@ class MyGame(arcade.Window):
         t = '{:02d}:{:02d}'.format(mins, secs)
         arcade.draw_text(t, SCREEN_WIDTH - 100, SCREEN_HEIGHT- 30)
 
-        if self.failure < TARGET_RADIUS + DEFENCE_RADIUS:
+        if timer == 0 or self.failure < TARGET_RADIUS + DEFENCE_RADIUS:
             if timer > 0:
-                arcade.draw_text("Hit space to continue.", SCREEN_WIDTH/3, SCREEN_HEIGHT/3 * 2)
+                arcade.draw_text("Hit space to continue.", SCREEN_WIDTH/3+55, SCREEN_HEIGHT/3 * 2)
             else:
-                arcade.draw_text("Thank you for your participation. Please e-mail me the trainingResults#.txt files that were created.", SCREEN_WIDTH/3, SCREEN_HEIGHT/4 * 3)
+                arcade.draw_text("Thank you for your participation. Please e-mail me the Results.csv file that was created.", 100, SCREEN_HEIGHT/4 * 3)
 
     def on_mouse_press(self, x, y, button, key_modifiers):
         """ Called when the user presses a mouse button. """
         # Get list of targets we've clicked on
+        if timer == 0 or self.failure < TARGET_RADIUS + DEFENCE_RADIUS:
+            return
         hit = arcade.get_sprites_at_point((x, y), self.active_target_list)
 
         # Have we clicked on a target?
         if len(hit) > 0:
-            arcade.stop_sound(self.sound_player)
+            # Update data for csv
             self.score += 1
+            trial_duration = calc_time(self.start_time)
+            add_run_to_file(subject, self.score, self.active_target_list[0].draw_delay, 
+                            self.active_target_list[0].chord, 'Pass', self.start_timer, trial_duration)
+
+            # Remove the active target
+            arcade.stop_sound(self.sound_player)
             hit_target = self.active_target_list.pop()
             hit_target.draw_delay = 0
             self.target_list.append(hit_target)
@@ -191,6 +219,8 @@ class MyGame(arcade.Window):
             self.active_target_list.append(active)
 
             center_mouse()
+            self.start_time = get_time()
+            self.start_timer = timer
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.SPACE and self.failure < TARGET_RADIUS + DEFENCE_RADIUS:
@@ -198,9 +228,8 @@ class MyGame(arcade.Window):
 
 
     def on_update(self, delta):
-        global timer, run
-        time = self.start_time - timer
-        if timer > 0  and run == self.original_run:
+        global timer, results
+        if timer > 0:
             # Make sure there is a target
             if len(self.active_target_list) == 0:
                 active = self.target_list.pop(0)
@@ -208,14 +237,16 @@ class MyGame(arcade.Window):
                 self.active_target_list.append(active)
             
             # Make sure the target hasn't collided with the defence point
-            self.failure = arcade.get_distance_between_sprites(self.defence_list[0], self.active_target_list[0])
+            self.failure = arcade.get_distance_between_sprites(self.defence_list[0], 
+                                                               self.active_target_list[0])
             if (self.failure < TARGET_RADIUS + DEFENCE_RADIUS):
-                # write a print to file for the active_target_list[0] chord type 
-                # and the "score" to represent which iteration
-                result = open(f'trainingResults{run}.txt', 'w')
-                result.write(f'Subject failed round {self.score+1} on chord {self.active_target_list[0].chord} after {time} seconds.')
-                result.close()
-                run += 1 
+                # Update data for csv
+                trial_duration = calc_time(self.start_time)
+                if not self.written:
+                    add_run_to_file(subject, self.score + 1, self.active_target_list[0].draw_delay, 
+                                    self.active_target_list[0].chord, 'Fail', self.start_timer, 
+                                    trial_duration)
+                    self.written = True
             else:
                 self.active_target_list[0].move_to_center(RATE_OF_TRAVEL + self.score / 50)
                 if self.active_target_list[0].sound_frequency % 30 == 0:
@@ -227,15 +258,69 @@ class MyGame(arcade.Window):
                 if self.score >= 30:
                     self.active_target_list[0].draw_delay += 1
                 self.active_target_list[0].sound_frequency += 1
-        if timer == 0 and run > self.original_run:
-            result = open(f'trainingResults{run}.txt', 'w')
-            result.write(f'Timer finished on round {self.score+1} on chord {self.active_target_list[0].chord} after {time} seconds.')
-            result.close()
+        if timer == 0:
+            # Test is over
+            trial_duration = calc_time(self.start_time)
+            if not self.written:
+                add_run_to_file(subject, self.score + 2, self.active_target_list[0].draw_delay,
+                                 self.active_target_list[0].chord, 'Time Out', self.start_timer, 
+                                 trial_duration)
+                self.written = True
+
+            # write to CSV file
+            data_file = open('Results.csv', 'w', newline='')
+            csv_writer = csv.writer(data_file)
+            count = 0
+            for data in results:
+                if count == 0:
+                    header = data.keys()
+                    csv_writer.writerow(header)
+                    count += 1
+                csv_writer.writerow(data.values())
+ 
+            data_file.close()
+
+class LoginView(arcade.View):
+    """ Class for a title screen and controls to start game """
+    def __init__(self):
+        super().__init__()
+        self.manager = UIManager()
+        self.manager.enable()
+        self.textbox = UIInputText(x=SCREEN_WIDTH/2-100, y=SCREEN_HEIGHT/2-25, 
+                                   width=200, height=50, text="")
+        arcade.set_background_color(arcade.color.DARK_BLUE_GRAY)
+
+        bg_tex = arcade.load_texture(":resources:gui_basic_assets/window/grey_panel.png")
+
+        self.manager.add(
+            UITexturePane(
+                self.textbox,
+                tex=bg_tex,
+                padding=(10, 10, 10, 10)
+            ))
+        
+    def on_draw(self):
+        self.clear()
+        arcade.draw_text('Please enter your participant ID and hit enter to begin', 
+                         SCREEN_WIDTH/2-200, SCREEN_HEIGHT/2+75)
+        self.manager.draw()
+
+
+    def on_key_press(self, key, modifiers):
+        """ Progress if Enter is pressed """
+        global subject 
+        if key == arcade.key.ENTER:
+            subject = self.textbox.text
+            game_view = GameView()
+            game_view.setup()
+            self.window.show_view(game_view)
+
 
 def main():
     """ Main function """
-    window = MyGame()
-    window.setup()
+    window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, center_window=True)
+    start_view = LoginView()
+    window.show_view(start_view)
     arcade.run()
 
 if __name__ == "__main__":
