@@ -38,6 +38,22 @@ CHORD_FILES = [['resources\D7_A4_Piano.wav','resources\D7_AS4_Piano.wav','resour
 'resources\mi7_CS4_Piano.wav','resources\mi7_D4_Piano.wav','resources\mi7_DS4_Piano.wav','resources\mi7_E4_Piano.wav',
 'resources\mi7_F4_Piano.wav','resources\mi7_FS4_Piano.wav','resources\mi7_G4_Piano.wav','resources\mi7_GS4_Piano.wav']]
 
+
+# Control constants
+# CHORD_TYPES = 5
+# CHORD_SAMPLES = 5
+
+# CHORD_FILES = [['control\_a_ControlAudioHighNormalSpeak.wav', 'control\_a_ControlAudioHighSung.wav','control\_a_ControlAudioMaleHigh.wav',
+#                 'control\_a_ControlAudioMaleNormal.wav', 'control\_a_ControlAudioNormalSpeak.wav'],
+#                 ['control\_e_ControlAudioHighNormalSpeak.wav', 'control\_e_ControlAudioHighSung.wav','control\_e_ControlAudioMaleHigh.wav',
+#                 'control\_e_ControlAudioMaleNormal.wav', 'control\_e_ControlAudioNormalSpeak.wav'],
+#                 ['control\_i_ControlAudioHighNormalSpeak.wav', 'control\_i_ControlAudioHighSung.wav','control\_i_ControlAudioMaleHigh.wav',
+#                 'control\_i_ControlAudioMaleNormal.wav', 'control\_i_ControlAudioNormalSpeak.wav'],
+#                 ['control\_o_ControlAudioHighNormalSpeak.wav', 'control\_o_ControlAudioHighSung.wav','control\_o_ControlAudioMaleHigh.wav',
+#                 'control\_o_ControlAudioMaleNormal.wav', 'control\_o_ControlAudioNormalSpeak.wav'],
+#                 ['control\_u_ControlAudioHighNormalSpeak.wav', 'control\_u_ControlAudioHighSung.wav','control\_u_ControlAudioMaleHigh.wav',
+#                 'control\_u_ControlAudioMaleNormal.wav', 'control\_u_ControlAudioNormalSpeak.wav']]
+
 # Constant start points for the different chord types
 CHORD_X = [SCREEN_WIDTH/4,SCREEN_WIDTH/4*3,0,SCREEN_WIDTH/2,SCREEN_WIDTH]
 CHORD_Y = [0,0,SCREEN_HEIGHT/4*3,SCREEN_HEIGHT,SCREEN_HEIGHT/5*4]
@@ -50,7 +66,7 @@ TYPE_COLOR = [(122, 40, 203), (165, 1, 4),
 RATE_OF_TRAVEL = .5
 
 # Global variables for number of runs, timer, and trial data
-timer = 30 #1800
+timer = 1800
 subject = ''
 results = []
 
@@ -190,7 +206,7 @@ class GameView(arcade.View):
             if timer > 0:
                 arcade.draw_text("Hit space to continue.", SCREEN_WIDTH/3+55, SCREEN_HEIGHT/3 * 2)
             else:
-                arcade.draw_text("Thank you for your participation. Please e-mail me the Results.csv file that was created.", 100, SCREEN_HEIGHT/4 * 3)
+                arcade.draw_text("Thank you for your participation. Please e-mail me the Results.csv file that was created.", 85, SCREEN_HEIGHT/4 * 3)
 
     def on_mouse_press(self, x, y, button, key_modifiers):
         """ Called when the user presses a mouse button. """
