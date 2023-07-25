@@ -226,6 +226,7 @@ class GameView(arcade.View):
             # Remove the active target
             arcade.stop_sound(self.sound_player)
             hit_target = self.active_target_list.pop()
+            hit_target.sound_frequency = 0
             hit_target.draw_delay = 0
             self.target_list.append(hit_target)
 
