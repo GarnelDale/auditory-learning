@@ -19,40 +19,40 @@ TARGET_RADIUS = 18
 DEFENCE_RADIUS = 40
 
 # Constants for number of different targets
-CHORD_TYPES = 5
-CHORD_SAMPLES = 12
+# CHORD_TYPES = 5
+# CHORD_SAMPLES = 12
 
-CHORD_FILES = [['resources\D7_A4_Piano.wav','resources\D7_AS4_Piano.wav','resources\D7_B4_Piano.wav','resources\D7_C4_Piano.wav',
-'resources\D7_CS4_Piano.wav','resources\D7_D4_Piano.wav','resources\D7_DS4_Piano.wav','resources\D7_E4_Piano.wav',
-'resources\D7_F4_Piano.wav','resources\D7_FS4_Piano.wav','resources\D7_G4_Piano.wav','resources\D7_GS4_Piano.wav'],
-['resources\FD7_A4_Piano.wav','resources\FD7_AS4_Piano.wav','resources\FD7_B4_Piano.wav','resources\FD7_C4_Piano.wav',
-'resources\FD7_CS4_Piano.wav','resources\FD7_D4_Piano.wav','resources\FD7_DS4_Piano.wav','resources\FD7_E4_Piano.wav',
-'resources\FD7_F4_Piano.wav','resources\FD7_FS4_Piano.wav','resources\FD7_G4_Piano.wav','resources\FD7_GS4_Piano.wav'],
-['resources\HD7_A4_Piano.wav','resources\HD7_AS4_Piano.wav','resources\HD7_B4_Piano.wav','resources\HD7_C4_Piano.wav',
-'resources\HD7_CS4_Piano.wav','resources\HD7_D4_Piano.wav','resources\HD7_DS4_Piano.wav','resources\HD7_E4_Piano.wav',
-'resources\HD7_F4_Piano.wav','resources\HD7_FS4_Piano.wav','resources\HD7_G4_Piano.wav','resources\HD7_GS4_Piano.wav'],
-['resources\M7_A4_Piano.wav','resources\M7_AS4_Piano.wav','resources\M7_B4_Piano.wav','resources\M7_C4_Piano.wav',
-'resources\M7_CS4_Piano.wav','resources\M7_D4_Piano.wav','resources\M7_DS4_Piano.wav','resources\M7_E4_Piano.wav',
-'resources\M7_F4_Piano.wav','resources\M7_FS4_Piano.wav','resources\M7_G4_Piano.wav','resources\M7_GS4_Piano.wav'],
-['resources\mi7_A4_Piano.wav','resources\mi7_AS4_Piano.wav','resources\mi7_B4_Piano.wav','resources\mi7_C4_Piano.wav',
-'resources\mi7_CS4_Piano.wav','resources\mi7_D4_Piano.wav','resources\mi7_DS4_Piano.wav','resources\mi7_E4_Piano.wav',
-'resources\mi7_F4_Piano.wav','resources\mi7_FS4_Piano.wav','resources\mi7_G4_Piano.wav','resources\mi7_GS4_Piano.wav']]
+# CHORD_FILES = [['resources\D7_A4_Piano.wav','resources\D7_AS4_Piano.wav','resources\D7_B4_Piano.wav','resources\D7_C4_Piano.wav',
+# 'resources\D7_CS4_Piano.wav','resources\D7_D4_Piano.wav','resources\D7_DS4_Piano.wav','resources\D7_E4_Piano.wav',
+# 'resources\D7_F4_Piano.wav','resources\D7_FS4_Piano.wav','resources\D7_G4_Piano.wav','resources\D7_GS4_Piano.wav'],
+# ['resources\FD7_A4_Piano.wav','resources\FD7_AS4_Piano.wav','resources\FD7_B4_Piano.wav','resources\FD7_C4_Piano.wav',
+# 'resources\FD7_CS4_Piano.wav','resources\FD7_D4_Piano.wav','resources\FD7_DS4_Piano.wav','resources\FD7_E4_Piano.wav',
+# 'resources\FD7_F4_Piano.wav','resources\FD7_FS4_Piano.wav','resources\FD7_G4_Piano.wav','resources\FD7_GS4_Piano.wav'],
+# ['resources\HD7_A4_Piano.wav','resources\HD7_AS4_Piano.wav','resources\HD7_B4_Piano.wav','resources\HD7_C4_Piano.wav',
+# 'resources\HD7_CS4_Piano.wav','resources\HD7_D4_Piano.wav','resources\HD7_DS4_Piano.wav','resources\HD7_E4_Piano.wav',
+# 'resources\HD7_F4_Piano.wav','resources\HD7_FS4_Piano.wav','resources\HD7_G4_Piano.wav','resources\HD7_GS4_Piano.wav'],
+# ['resources\M7_A4_Piano.wav','resources\M7_AS4_Piano.wav','resources\M7_B4_Piano.wav','resources\M7_C4_Piano.wav',
+# 'resources\M7_CS4_Piano.wav','resources\M7_D4_Piano.wav','resources\M7_DS4_Piano.wav','resources\M7_E4_Piano.wav',
+# 'resources\M7_F4_Piano.wav','resources\M7_FS4_Piano.wav','resources\M7_G4_Piano.wav','resources\M7_GS4_Piano.wav'],
+# ['resources\mi7_A4_Piano.wav','resources\mi7_AS4_Piano.wav','resources\mi7_B4_Piano.wav','resources\mi7_C4_Piano.wav',
+# 'resources\mi7_CS4_Piano.wav','resources\mi7_D4_Piano.wav','resources\mi7_DS4_Piano.wav','resources\mi7_E4_Piano.wav',
+# 'resources\mi7_F4_Piano.wav','resources\mi7_FS4_Piano.wav','resources\mi7_G4_Piano.wav','resources\mi7_GS4_Piano.wav']]
 
 
 # Control constants
-# CHORD_TYPES = 5
-# CHORD_SAMPLES = 5
+CHORD_TYPES = 5
+CHORD_SAMPLES = 5
 
-# CHORD_FILES = [['control\_a_ControlAudioHighNormalSpeak.wav', 'control\_a_ControlAudioHighSung.wav','control\_a_ControlAudioMaleHigh.wav',
-#                 'control\_a_ControlAudioMaleNormal.wav', 'control\_a_ControlAudioNormalSpeak.wav'],
-#                 ['control\_e_ControlAudioHighNormalSpeak.wav', 'control\_e_ControlAudioHighSung.wav','control\_e_ControlAudioMaleHigh.wav',
-#                 'control\_e_ControlAudioMaleNormal.wav', 'control\_e_ControlAudioNormalSpeak.wav'],
-#                 ['control\_i_ControlAudioHighNormalSpeak.wav', 'control\_i_ControlAudioHighSung.wav','control\_i_ControlAudioMaleHigh.wav',
-#                 'control\_i_ControlAudioMaleNormal.wav', 'control\_i_ControlAudioNormalSpeak.wav'],
-#                 ['control\_o_ControlAudioHighNormalSpeak.wav', 'control\_o_ControlAudioHighSung.wav','control\_o_ControlAudioMaleHigh.wav',
-#                 'control\_o_ControlAudioMaleNormal.wav', 'control\_o_ControlAudioNormalSpeak.wav'],
-#                 ['control\_u_ControlAudioHighNormalSpeak.wav', 'control\_u_ControlAudioHighSung.wav','control\_u_ControlAudioMaleHigh.wav',
-#                 'control\_u_ControlAudioMaleNormal.wav', 'control\_u_ControlAudioNormalSpeak.wav']]
+CHORD_FILES = [['control\_a_ControlAudioHighNormalSpeak.wav', 'control\_a_ControlAudioHighSung.wav','control\_a_ControlAudioMaleHigh.wav',
+                'control\_a_ControlAudioMaleNormal.wav', 'control\_a_ControlAudioNormalSpeak.wav'],
+                ['control\_e_ControlAudioHighNormalSpeak.wav', 'control\_e_ControlAudioHighSung.wav','control\_e_ControlAudioMaleHigh.wav',
+                'control\_e_ControlAudioMaleNormal.wav', 'control\_e_ControlAudioNormalSpeak.wav'],
+                ['control\_i_ControlAudioHighNormalSpeak.wav', 'control\_i_ControlAudioHighSung.wav','control\_i_ControlAudioMaleHigh.wav',
+                'control\_i_ControlAudioMaleNormal.wav', 'control\_i_ControlAudioNormalSpeak.wav'],
+                ['control\_o_ControlAudioHighNormalSpeak.wav', 'control\_o_ControlAudioHighSung.wav','control\_o_ControlAudioMaleHigh.wav',
+                'control\_o_ControlAudioMaleNormal.wav', 'control\_o_ControlAudioNormalSpeak.wav'],
+                ['control\_u_ControlAudioHighNormalSpeak.wav', 'control\_u_ControlAudioHighSung.wav','control\_u_ControlAudioMaleHigh.wav',
+                'control\_u_ControlAudioMaleNormal.wav', 'control\_u_ControlAudioNormalSpeak.wav']]
 
 # Constant start points for the different chord types
 CHORD_X = [SCREEN_WIDTH/4,SCREEN_WIDTH/4*3,0,SCREEN_WIDTH/2,SCREEN_WIDTH]
@@ -145,6 +145,8 @@ class GameView(arcade.View):
         self.start_timer = 0
         self.start_time = 0
         self.written = False
+        self.up_delay = False
+        self.draw_delay = 0
 
         arcade.set_background_color(arcade.color.BLACK)
 
@@ -160,6 +162,8 @@ class GameView(arcade.View):
         self.start_timer = timer
         self.start_time = get_time()
         self.written = False
+        self.up_delay = False
+        self.draw_delay = 0
 
         # Create every target
         for chord in range(CHORD_TYPES):
@@ -190,8 +194,8 @@ class GameView(arcade.View):
         self.clear()
 
         # Draw the active sprites
-        if self.score >= 30:
-            if self.active_target_list[0].draw_delay >= 15:
+        if self.score >= 15:
+            if self.active_target_list[0].draw_delay == self.draw_delay:
                 self.active_target_list.draw()
         else:
             self.active_target_list.draw()
@@ -210,6 +214,8 @@ class GameView(arcade.View):
 
     def on_mouse_press(self, x, y, button, key_modifiers):
         """ Called when the user presses a mouse button. """
+        global timer
+
         # Get list of targets we've clicked on
         if timer == 0 or self.failure < TARGET_RADIUS + DEFENCE_RADIUS:
             return
@@ -220,11 +226,14 @@ class GameView(arcade.View):
             # Update data for csv
             self.score += 1
             trial_duration = calc_time(self.start_time)
-            add_run_to_file(subject, self.score, self.active_target_list[0].draw_delay, 
+            add_run_to_file(subject, self.score, self.draw_delay, 
                             self.active_target_list[0].chord, 'Pass', self.start_timer, trial_duration)
+            
+            arcade.stop_sound(self.sound_player)
+            # Add 1 second pause between trials
+            time.sleep(1.0)
 
             # Remove the active target
-            arcade.stop_sound(self.sound_player)
             hit_target = self.active_target_list.pop()
             hit_target.sound_frequency = 0
             hit_target.draw_delay = 0
@@ -235,6 +244,8 @@ class GameView(arcade.View):
             self.sound = arcade.load_sound(active.chord)
             self.active_target_list.append(active)
 
+            
+            self.up_delay = False
             center_mouse()
             self.start_time = get_time()
             self.start_timer = timer
@@ -265,21 +276,24 @@ class GameView(arcade.View):
                                     trial_duration)
                     self.written = True
             else:
-                self.active_target_list[0].move_to_center(RATE_OF_TRAVEL + self.score / 50)
+                self.active_target_list[0].move_to_center(RATE_OF_TRAVEL + self.score / 100)
                 if self.active_target_list[0].sound_frequency % 30 == 0:
                     self.sound_player = arcade.play_sound(self.sound)
                 if self.active_target_list[0].sound_frequency % 60 == 0:
                     timer -= 1
                 if ((self.score % len(self.target_list)) == 0):
                     random.shuffle(self.target_list)
-                if self.score >= 30:
+                if self.score % 15 == 0 and not self.up_delay:
+                    self.up_delay = True
+                    self.draw_delay += 10    
+                if self.active_target_list[0].draw_delay < self.draw_delay:
                     self.active_target_list[0].draw_delay += 1
                 self.active_target_list[0].sound_frequency += 1
         if timer == 0:
             # Test is over
             trial_duration = calc_time(self.start_time)
             if not self.written:
-                add_run_to_file(subject, self.score + 2, self.active_target_list[0].draw_delay,
+                add_run_to_file(subject, self.score + 1, self.draw_delay,
                                  self.active_target_list[0].chord, 'Time Out', self.start_timer, 
                                  trial_duration)
                 self.written = True
