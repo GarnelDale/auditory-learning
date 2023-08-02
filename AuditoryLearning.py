@@ -19,40 +19,40 @@ TARGET_RADIUS = 18
 DEFENCE_RADIUS = 40
 
 # Constants for number of different targets
-CHORD_TYPES = 5
-CHORD_SAMPLES = 12
+# CHORD_TYPES = 5
+# CHORD_SAMPLES = 12
 
-CHORD_FILES = [['resources\D7_A4_Piano.wav','resources\D7_AS4_Piano.wav','resources\D7_B4_Piano.wav','resources\D7_C4_Piano.wav',
-'resources\D7_CS4_Piano.wav','resources\D7_D4_Piano.wav','resources\D7_DS4_Piano.wav','resources\D7_E4_Piano.wav',
-'resources\D7_F4_Piano.wav','resources\D7_FS4_Piano.wav','resources\D7_G4_Piano.wav','resources\D7_GS4_Piano.wav'],
-['resources\FD7_A4_Piano.wav','resources\FD7_AS4_Piano.wav','resources\FD7_B4_Piano.wav','resources\FD7_C4_Piano.wav',
-'resources\FD7_CS4_Piano.wav','resources\FD7_D4_Piano.wav','resources\FD7_DS4_Piano.wav','resources\FD7_E4_Piano.wav',
-'resources\FD7_F4_Piano.wav','resources\FD7_FS4_Piano.wav','resources\FD7_G4_Piano.wav','resources\FD7_GS4_Piano.wav'],
-['resources\HD7_A4_Piano.wav','resources\HD7_AS4_Piano.wav','resources\HD7_B4_Piano.wav','resources\HD7_C4_Piano.wav',
-'resources\HD7_CS4_Piano.wav','resources\HD7_D4_Piano.wav','resources\HD7_DS4_Piano.wav','resources\HD7_E4_Piano.wav',
-'resources\HD7_F4_Piano.wav','resources\HD7_FS4_Piano.wav','resources\HD7_G4_Piano.wav','resources\HD7_GS4_Piano.wav'],
-['resources\M7_A4_Piano.wav','resources\M7_AS4_Piano.wav','resources\M7_B4_Piano.wav','resources\M7_C4_Piano.wav',
-'resources\M7_CS4_Piano.wav','resources\M7_D4_Piano.wav','resources\M7_DS4_Piano.wav','resources\M7_E4_Piano.wav',
-'resources\M7_F4_Piano.wav','resources\M7_FS4_Piano.wav','resources\M7_G4_Piano.wav','resources\M7_GS4_Piano.wav'],
-['resources\mi7_A4_Piano.wav','resources\mi7_AS4_Piano.wav','resources\mi7_B4_Piano.wav','resources\mi7_C4_Piano.wav',
-'resources\mi7_CS4_Piano.wav','resources\mi7_D4_Piano.wav','resources\mi7_DS4_Piano.wav','resources\mi7_E4_Piano.wav',
-'resources\mi7_F4_Piano.wav','resources\mi7_FS4_Piano.wav','resources\mi7_G4_Piano.wav','resources\mi7_GS4_Piano.wav']]
+# CHORD_FILES = [['resources\D7_A4_Piano.wav','resources\D7_AS4_Piano.wav','resources\D7_B4_Piano.wav','resources\D7_C4_Piano.wav',
+# 'resources\D7_CS4_Piano.wav','resources\D7_D4_Piano.wav','resources\D7_DS4_Piano.wav','resources\D7_E4_Piano.wav',
+# 'resources\D7_F4_Piano.wav','resources\D7_FS4_Piano.wav','resources\D7_G4_Piano.wav','resources\D7_GS4_Piano.wav'],
+# ['resources\FD7_A4_Piano.wav','resources\FD7_AS4_Piano.wav','resources\FD7_B4_Piano.wav','resources\FD7_C4_Piano.wav',
+# 'resources\FD7_CS4_Piano.wav','resources\FD7_D4_Piano.wav','resources\FD7_DS4_Piano.wav','resources\FD7_E4_Piano.wav',
+# 'resources\FD7_F4_Piano.wav','resources\FD7_FS4_Piano.wav','resources\FD7_G4_Piano.wav','resources\FD7_GS4_Piano.wav'],
+# ['resources\HD7_A4_Piano.wav','resources\HD7_AS4_Piano.wav','resources\HD7_B4_Piano.wav','resources\HD7_C4_Piano.wav',
+# 'resources\HD7_CS4_Piano.wav','resources\HD7_D4_Piano.wav','resources\HD7_DS4_Piano.wav','resources\HD7_E4_Piano.wav',
+# 'resources\HD7_F4_Piano.wav','resources\HD7_FS4_Piano.wav','resources\HD7_G4_Piano.wav','resources\HD7_GS4_Piano.wav'],
+# ['resources\M7_A4_Piano.wav','resources\M7_AS4_Piano.wav','resources\M7_B4_Piano.wav','resources\M7_C4_Piano.wav',
+# 'resources\M7_CS4_Piano.wav','resources\M7_D4_Piano.wav','resources\M7_DS4_Piano.wav','resources\M7_E4_Piano.wav',
+# 'resources\M7_F4_Piano.wav','resources\M7_FS4_Piano.wav','resources\M7_G4_Piano.wav','resources\M7_GS4_Piano.wav'],
+# ['resources\mi7_A4_Piano.wav','resources\mi7_AS4_Piano.wav','resources\mi7_B4_Piano.wav','resources\mi7_C4_Piano.wav',
+# 'resources\mi7_CS4_Piano.wav','resources\mi7_D4_Piano.wav','resources\mi7_DS4_Piano.wav','resources\mi7_E4_Piano.wav',
+# 'resources\mi7_F4_Piano.wav','resources\mi7_FS4_Piano.wav','resources\mi7_G4_Piano.wav','resources\mi7_GS4_Piano.wav']]
 
 
 # Control constants
-# CHORD_TYPES = 5
-# CHORD_SAMPLES = 5
+CHORD_TYPES = 5
+CHORD_SAMPLES = 5
 
-# CHORD_FILES = [['control\_a_ControlAudioHighNormalSpeak.wav', 'control\_a_ControlAudioHighSung.wav','control\_a_ControlAudioMaleHigh.wav',
-#                 'control\_a_ControlAudioMaleNormal.wav', 'control\_a_ControlAudioNormalSpeak.wav'],
-#                 ['control\_e_ControlAudioHighNormalSpeak.wav', 'control\_e_ControlAudioHighSung.wav','control\_e_ControlAudioMaleHigh.wav',
-#                 'control\_e_ControlAudioMaleNormal.wav', 'control\_e_ControlAudioNormalSpeak.wav'],
-#                 ['control\_i_ControlAudioHighNormalSpeak.wav', 'control\_i_ControlAudioHighSung.wav','control\_i_ControlAudioMaleHigh.wav',
-#                 'control\_i_ControlAudioMaleNormal.wav', 'control\_i_ControlAudioNormalSpeak.wav'],
-#                 ['control\_o_ControlAudioHighNormalSpeak.wav', 'control\_o_ControlAudioHighSung.wav','control\_o_ControlAudioMaleHigh.wav',
-#                 'control\_o_ControlAudioMaleNormal.wav', 'control\_o_ControlAudioNormalSpeak.wav'],
-#                 ['control\_u_ControlAudioHighNormalSpeak.wav', 'control\_u_ControlAudioHighSung.wav','control\_u_ControlAudioMaleHigh.wav',
-#                 'control\_u_ControlAudioMaleNormal.wav', 'control\_u_ControlAudioNormalSpeak.wav']]
+CHORD_FILES = [['control\_a_ControlAudioHighNormalSpeak.wav', 'control\_a_ControlAudioHighSung.wav','control\_a_ControlAudioMaleHigh.wav',
+                'control\_a_ControlAudioMaleNormal.wav', 'control\_a_ControlAudioNormalSpeak.wav'],
+                ['control\_e_ControlAudioHighNormalSpeak.wav', 'control\_e_ControlAudioHighSung.wav','control\_e_ControlAudioMaleHigh.wav',
+                'control\_e_ControlAudioMaleNormal.wav', 'control\_e_ControlAudioNormalSpeak.wav'],
+                ['control\_i_ControlAudioHighNormalSpeak.wav', 'control\_i_ControlAudioHighSung.wav','control\_i_ControlAudioMaleHigh.wav',
+                'control\_i_ControlAudioMaleNormal.wav', 'control\_i_ControlAudioNormalSpeak.wav'],
+                ['control\_o_ControlAudioHighNormalSpeak.wav', 'control\_o_ControlAudioHighSung.wav','control\_o_ControlAudioMaleHigh.wav',
+                'control\_o_ControlAudioMaleNormal.wav', 'control\_o_ControlAudioNormalSpeak.wav'],
+                ['control\_u_ControlAudioHighNormalSpeak.wav', 'control\_u_ControlAudioHighSung.wav','control\_u_ControlAudioMaleHigh.wav',
+                'control\_u_ControlAudioMaleNormal.wav', 'control\_u_ControlAudioNormalSpeak.wav']]
 
 # Constant start points for the different chord types
 CHORD_X = [SCREEN_WIDTH/4,SCREEN_WIDTH/4*3,0,SCREEN_WIDTH/2,SCREEN_WIDTH]
@@ -66,7 +66,7 @@ TYPE_COLOR = [(122, 40, 203), (165, 1, 4),
 RATE_OF_TRAVEL = .5
 
 # Global variables for number of runs, timer, and trial data
-timer = 1800
+timer = 600
 subject = ''
 results = []
 
