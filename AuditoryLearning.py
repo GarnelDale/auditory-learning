@@ -229,7 +229,7 @@ class GameView(arcade.View):
             add_run_to_file(subject, self.score, self.draw_delay, 
                             self.active_target_list[0].chord, 'Pass', self.start_timer, trial_duration)
             
-            arcade.stop_sound(self.sound_player)
+            # arcade.stop_sound(self.sound_player)
             # Add 1 second pause between trials
             time.sleep(1.0)
 
